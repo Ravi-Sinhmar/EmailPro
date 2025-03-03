@@ -5,13 +5,18 @@ import { authState } from "@/states/atoms/auth";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 export default function AuthPage() {
+
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
   const [isAuth, setIsAuth] = useRecoilState(authState);
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('http://localhost:3000/auth/check-tokens', {
+        const response = await fetch(`${BACKEND_URL}/auth/check-tokens`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -41,7 +46,7 @@ export default function AuthPage() {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(`http://localhost:3000/auth/callback?code=${code}`, {
+      fetch(`${BACKEND_URL}/auth/callback?code=${code}`, {
         method: "GET",
         credentials: "include",
       })

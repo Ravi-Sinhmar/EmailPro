@@ -4,6 +4,10 @@ import { useSetRecoilState } from "recoil";
 import { authState } from "../states/atoms/auth";
 
 function Callback() {
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
   const navigate = useNavigate();
   const setIsAuth = useSetRecoilState(authState);
 
@@ -12,7 +16,7 @@ function Callback() {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(`http://localhost:3000/auth/callback?code=${code}`, {
+      fetch(`${BACKEND_URL}/auth/callback?code=${code}`, {
         method: "GET",
         credentials: "include",
       })

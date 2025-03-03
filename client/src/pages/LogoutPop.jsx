@@ -3,11 +3,16 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import { isLogoutPopupOpenState,authState } from '../states/atoms/auth';
 
 const LogoutPopup = () => {
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
+
   const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useRecoilState(isLogoutPopupOpenState);
 const setIsAuth = useSetRecoilState(authState)
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/logout', {
+      const response = await fetch(`${BACKEND_URL}/auth/logout`, {
         method: 'POST',
         credentials: 'include',
       });

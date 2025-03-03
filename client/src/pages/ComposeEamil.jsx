@@ -6,6 +6,12 @@ import { Wand2, Loader2, X, Send, Trash2 } from 'lucide-react';
 import OverlayComponent from '@/components/OverlayComponent';
 
 export default function SendEmail() {
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
+
+
   const [sharedArray, setSharedArray] = useState([]);
   const [inputEmail, setInputEmail] = useState('');
   const [subject, setSubject] = useState('');
@@ -58,7 +64,7 @@ export default function SendEmail() {
 
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/sendEmail', {
+      const response = await fetch(`${BACKEND_URL}/sendEmail`, {
         method: 'POST',
         body: formData,
         credentials: 'include',
@@ -117,7 +123,7 @@ export default function SendEmail() {
       }`;
 
       try {
-        const response = await fetch("http://localhost:3000/question", {
+        const response = await fetch(`${BACKEND_URL}/question`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

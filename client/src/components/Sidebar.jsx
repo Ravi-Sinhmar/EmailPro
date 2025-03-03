@@ -14,6 +14,11 @@ import { MdSpaceDashboard } from 'react-icons/md';
 import { isSidebarOpenState, isLogoutPopupOpenState, isDeleteAccountPopupOpenState } from '../states/atoms/auth';
 
 const Sidebar = () => {
+
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
   const [isSidebarOpen, setIsSidebarOpen] = useRecoilState(isSidebarOpenState);
   const [, setIsLogoutPopupOpen] = useRecoilState(isLogoutPopupOpenState);
   const [, setIsDeleteAccountPopupOpen] = useRecoilState(isDeleteAccountPopupOpenState);
@@ -32,8 +37,8 @@ const Sidebar = () => {
   ];
 
   const bottomItems = [
-    { name: isAuth ?'Logout' : "Login" , icon: <FaSignOutAlt />, onClick: isAuth ? () => setIsLogoutPopupOpen(true)  : ()=> window.location.href = "http://localhost:3000/auth"},
-    { name:isAuth ?  'Delete Account' : "Create Account", icon: <FaTrash />, onClick: isAuth ? () => setIsDeleteAccountPopupOpen(true) :()=> window.location.href = "http://localhost:3000/auth" },
+    { name: isAuth ?'Logout' : "Login" , icon: <FaSignOutAlt />, onClick: isAuth ? () => setIsLogoutPopupOpen(true)  : ()=> window.location.href = `${BACKEND_URL}/auth`},
+    { name:isAuth ?  'Delete Account' : "Create Account", icon: <FaTrash />, onClick: isAuth ? () => setIsDeleteAccountPopupOpen(true) :()=> window.location.href = `${BACKEND_URL}/auth` },
   ];
 
   return (

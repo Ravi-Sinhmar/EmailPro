@@ -4,6 +4,11 @@ import { isDeleteAccountPopupOpenState,authState } from '../states/atoms/auth';
 
 
 const DeleteAccountPopup = () => {
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
+
   const [isDeleteAccountPopupOpen, setIsDeleteAccountPopupOpen] = useRecoilState(
     isDeleteAccountPopupOpenState
   );
@@ -11,7 +16,7 @@ const DeleteAccountPopup = () => {
 
   const handleDeleteAccount = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/delete-account', {
+      const response = await fetch(`${BACKEND_URL}/auth/delete-account`, {
         method: 'DELETE',
         credentials: 'include',
       });

@@ -6,7 +6,17 @@ import { GrValidate } from "react-icons/gr";
 
 
 
+
+
 const Header = () => {
+
+  const BACKEND_URL =
+        import.meta.env.VITE_ENV === "Production"
+            ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+            : import.meta.env.VITE_LOCAL_BACKEND_URL;
+
+
+
   const [isSidebarOpen, setIsSidebarOpen] = useRecoilState(isSidebarOpenState);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
     const isAuth = useRecoilValue(authState)
@@ -20,7 +30,7 @@ const Header = () => {
     const handleAuth = () => {
       setIsAuthenticating(true);
     
-      window.location.href = "http://localhost:3000/auth";
+      window.location.href = `${BACKEND_URL}/auth`;
     };
 
   return (

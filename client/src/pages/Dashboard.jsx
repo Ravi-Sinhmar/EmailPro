@@ -7,6 +7,12 @@ import { loadingState  } from '@/states/atoms/auth';
 
 
 export default function EmailDashboard() {
+
+  const BACKEND_URL =
+  import.meta.env.VITE_ENV === "Production"
+      ? import.meta.env.VITE_PRODUCTION_BACKEND_URL
+      : import.meta.env.VITE_LOCAL_BACKEND_URL;
+
   const [selectedEmail, setSelectedEmail] = useState(null);
   const isSelectEmail = useRecoilValue(selectEmail);
   const [isLoading,setIsLoading] = useRecoilState(loadingState);
@@ -25,7 +31,7 @@ export default function EmailDashboard() {
   const handleReadEmails = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('http://localhost:3000/readEmails', {
+      const response = await fetch(`${BACKEND_URL}/readEmails`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

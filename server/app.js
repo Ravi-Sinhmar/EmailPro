@@ -8,11 +8,21 @@ const emailRoutes = require('./routes/emailRoutes');
 const aiRoutes = require('./routes/ai');
 const cookieParser = require("cookie-parser");
 
+const BACKEND_URL =
+    process.env.NODE_APP_ENV === "Production"
+        ? process.env.NODE_APP_PRODUCTION_BACKEND_URL
+        : process.env.NODE_APP_LOCAL_BACKEND_URL;
+
+        const FRONTEND_URL =
+        process.env.NODE_APP_ENV === "Production"
+            ? process.env.NODE_APP_PRODUCTION_FRONTEND_URL
+            : process.env.NODE_APP_LOCAL_FRONTEND_URL;
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: `${FRONTEND_URL}`,
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
@@ -34,5 +44,5 @@ app.use("/",aiRoutes);
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on Port:${PORT}`);
 });
