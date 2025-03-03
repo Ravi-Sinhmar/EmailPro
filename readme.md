@@ -1,6 +1,4 @@
-Here’s the complete `README.md` file code for your Email Pro application. You can copy and paste this directly into your repository:
 
-```markdown
 # Email Pro Application
 
 ![UI Preview](./client/Design/1.png)
@@ -177,5 +175,5 @@ For any queries, feel free to reach out:
 - **GitHub**: [Ravi-Sinhmar](https://github.com/Ravi-Sinhmar)
 ```
 
----
+
 
