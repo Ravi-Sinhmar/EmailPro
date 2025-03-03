@@ -12,7 +12,7 @@ const setIsAuth = useSetRecoilState(authState)
         credentials: 'include',
       });
       if (response.ok) {
-        window.location.href = '/'; // Redirect to home page after logout
+        window.location.href = '/'; 
         setIsAuth(false);
       } else {
         alert('Failed to logout. Please try again.');

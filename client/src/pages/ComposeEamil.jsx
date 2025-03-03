@@ -3,7 +3,7 @@ import { authState } from '@/states/atoms/auth';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { Wand2, Loader2, X, Send, Trash2 } from 'lucide-react';
-import OverlayComponent from '@/components/OverlayComponent'; // Import your OverlayComponent
+import OverlayComponent from '@/components/OverlayComponent';
 
 export default function SendEmail() {
   const [sharedArray, setSharedArray] = useState([]);
@@ -19,7 +19,7 @@ export default function SendEmail() {
   const location = useLocation();
   const isBulkEmail = location.pathname === '/email/bulk';
 
-  // Function to process emails (for bulk email)
+
   const processEmails = () => {
     const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
     const newEmails = inputEmail.match(emailRegex) || [];
@@ -27,12 +27,12 @@ export default function SendEmail() {
     setInputEmail('');
   };
 
-  // Function to delete an email from the list (for bulk email)
+  
   const deleteEmail = (index) => {
     setSharedArray(sharedArray.filter((_, i) => i !== index));
   };
 
-  // Function to send emails (both single and bulk)
+
   const sendEmailHandler = async () => {
     if (!isAuth) {
       alert('Please authenticate first.');
@@ -48,7 +48,7 @@ export default function SendEmail() {
       formData.append("resume", resume);
     }
 
-    // For bulk email, use the sharedArray
+
     if (isBulkEmail) {
       formData.append("toEmail", JSON.stringify(sharedArray));
     } else {
@@ -91,9 +91,9 @@ export default function SendEmail() {
   const handleClear = () => {
     setInputEmail('');
     setSharedArray([]);
+    setResume(null);
     setSubject('');
     setMessage('');
-    setResume(null);
   };
 
   // Function to generate email with AI
@@ -143,10 +143,10 @@ export default function SendEmail() {
 
         setSubject(subject);
         setMessage(emailBody);
-        return true; // Success
+        return true; 
       } catch (error) {
         console.error("Error:", error);
-        return false; // Failure
+        return false; 
       }
     };
 
@@ -154,7 +154,7 @@ export default function SendEmail() {
       attempts++;
       const success = await generate();
       if (success) {
-        break; // Exit the loop if successful
+        break; 
       }
       if (attempts < maxAttempts) {
         alert(`Attempt ${attempts} failed. Retrying...`);
@@ -182,7 +182,6 @@ export default function SendEmail() {
       </div>
 
       <div className="space-y-6">
-        {/* Recipient Input */}
         {isBulkEmail ? (
           <div className="space-y-2">
             <label className="block text-sm font-medium text-gray-700">Recipient Emails</label>
@@ -231,7 +230,6 @@ export default function SendEmail() {
           </div>
         )}
 
-        {/* Email Form */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">Subject</label>
           <input
@@ -253,7 +251,7 @@ export default function SendEmail() {
           />
         </div>
 
-        {/* Resume Attachment */}
+
         <div className="space-y-2">
           <label className="block text-sm font-medium text-gray-700">Attach Resume (Optional)</label>
           <input
@@ -263,7 +261,7 @@ export default function SendEmail() {
           />
         </div>
 
-        {/* Buttons */}
+    
         <div className="flex justify-end gap-3 pt-4">
           <button
             onClick={handleClear}
@@ -287,7 +285,7 @@ export default function SendEmail() {
         </div>
       </div>
 
-      {/* Overlay for Generate Email */}
+     
       {showOverlay && (
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50 px-2">
           <div className="bg-white rounded-xl shadow-xl p-6 lg:w-9/12 sm:w-10/12 w-full">
@@ -308,7 +306,7 @@ export default function SendEmail() {
         </div>
       )}
 
-      {/* Loading Overlay */}
+  
       {isLoading && (
         <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl shadow-lg flex items-center gap-3">

@@ -16,7 +16,7 @@ const DeleteAccountPopup = () => {
         credentials: 'include',
       });
       if (response.ok) {
-        window.location.href = '/'; // Redirect to home page after account deletion
+        window.location.href = '/';
         setIsAuth(false);
       } else {
         alert('Failed to delete account. Please try again.');

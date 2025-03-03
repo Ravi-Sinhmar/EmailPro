@@ -32,8 +32,8 @@ const Sidebar = () => {
   ];
 
   const bottomItems = [
-    { name: isAuth ?'Logout' : "Login" , icon: <FaSignOutAlt />, onClick: () => setIsLogoutPopupOpen(true) },
-    { name:isAuth ?  'Delete Account' : "Create Account", icon: <FaTrash />, onClick: () => setIsDeleteAccountPopupOpen(true) },
+    { name: isAuth ?'Logout' : "Login" , icon: <FaSignOutAlt />, onClick: isAuth ? () => setIsLogoutPopupOpen(true)  : ()=> window.location.href = "http://localhost:3000/auth"},
+    { name:isAuth ?  'Delete Account' : "Create Account", icon: <FaTrash />, onClick: isAuth ? () => setIsDeleteAccountPopupOpen(true) :()=> window.location.href = "http://localhost:3000/auth" },
   ];
 
   return (

@@ -17,7 +17,6 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
 
     try {
       await onSubmit(userData, jobDescription, customPrompt);
-      // Clear form fields after successful submission
       setUserData({ name: "", skills: "", experience: "" });
       setJobDescription("");
       setCustomPrompt("");
@@ -31,7 +30,6 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {/* Name Field */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">Your Name</label>
         <input
@@ -44,7 +42,6 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
         />
       </div>
 
-      {/* Skills Field */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">Your Skills</label>
         <input
@@ -57,7 +54,7 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
         />
       </div>
 
-      {/* Experience Field */}
+
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">Your Experience</label>
         <input
@@ -70,7 +67,7 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
         />
       </div>
 
-      {/* Job Description Field (Optional) */}
+   
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">
           Job Description (Optional)
@@ -84,7 +81,7 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
         />
       </div>
 
-      {/* Custom Instructions Field (Optional) */}
+   
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">
           Custom Instructions (Optional)
@@ -98,7 +95,7 @@ const OverlayComponent = ({ onClose, onSubmit }) => {
         />
       </div>
 
-      {/* Buttons */}
+    
       <div className="flex justify-end gap-3 pt-2">
         <button
           type="button"

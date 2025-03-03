@@ -1,5 +1,5 @@
 import React from 'react';
-import { Loader2 } from 'lucide-react'; // Use Loader2 for the spinner icon
+import { Loader2 } from 'lucide-react'; 
 
 export default function LoaderComponent() {
   return (

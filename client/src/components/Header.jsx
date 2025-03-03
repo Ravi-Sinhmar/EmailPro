@@ -11,7 +11,7 @@ const Header = () => {
     const [isAuthenticating, setIsAuthenticating] = useState(false);
     const isAuth = useRecoilValue(authState)
 
-  // Toggle sidebar visibility
+ 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -19,20 +19,20 @@ const Header = () => {
    // Function to handle authentication
     const handleAuth = () => {
       setIsAuthenticating(true);
-      // Redirect to the backend endpoint to start OAuth flow
+    
       window.location.href = "http://localhost:3000/auth";
     };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white border-b border-gray-200 p-4 flex justify-between items-center z-50">
-      {/* Sidebar Toggle Button */}
+  
       <button
         onClick={toggleSidebar}
         className="p-2 bg-white border border-gray-200 rounded-lg shadow-sm"
       >
         <FaBars className="w-4 h-4" />
       </button>
-     {/* Get Started Button */}
+  
      <div className='flex justify-center items-center gap-2'>
 
      <button

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Mail, FileText, Zap, Filter  , Sparkles} from "lucide-react"; // Updated import
+import { Mail, FileText, Zap, Filter  , Sparkles} from "lucide-react"; 
 import { authState } from "@/states/atoms/auth";
 import { useRecoilState, useRecoilValue } from "recoil";
 
@@ -65,7 +65,7 @@ export default function AuthPage() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {/* Feature 1: Bulk and Single Emails */}
+      
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex flex-col items-center p-4">
             <Mail className="w-8 h-8 text-blue-500 mb-4" />
@@ -76,7 +76,7 @@ export default function AuthPage() {
           </div>
         </div>
 
-        {/* Feature 2: AI-Powered Email Writing */}
+   
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex flex-col items-center p-4">
             <Sparkles className="w-8 h-8 text-blue-500 mb-4" />
@@ -87,10 +87,10 @@ export default function AuthPage() {
           </div>
         </div>
       
-        {/* Feature 3: Email Tracking */}
+   
         <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow">
           <div className="flex flex-col items-center p-4">
-            <Filter className="w-8 h-8 text-blue-500 mb-4 " /> {/* Updated icon */}
+            <Filter className="w-8 h-8 text-blue-500 mb-4 " /> 
             <h2 className="text font-semibold mb-2 text-gray-900">Email Filtering</h2>
             <p className="text-center text-gray-600">
               View all sent emails in two sections: replied emails and sent emails.

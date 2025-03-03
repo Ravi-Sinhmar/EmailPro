@@ -15,7 +15,7 @@ export default function AddEmail({ sharedArray, updateArray }) {
       const combinedEmails = [...prevEmails, ...newEmails]
       return Array.from(new Set(combinedEmails)) // Remove duplicates
     })
-    // Update shared array with new emails
+   
     updateArray([...sharedArray, ...newEmails])
     setInputEmails("")
     setShouldScrollRight(true)
@@ -26,12 +26,11 @@ export default function AddEmail({ sharedArray, updateArray }) {
       scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth
       setShouldScrollRight(false)
     }
-  }, [shouldScrollRight]) // Removed unnecessary dependency: processedEmails
+  }, [shouldScrollRight]) 
 
   const deleteEmail = (index) => {
     setProcessedEmails((prevEmails) => {
       const updatedEmails = prevEmails.filter((_, i) => i !== index)
-      // Update shared array when deleting an email
       updateArray(updatedEmails)
       return updatedEmails
     })
@@ -40,7 +39,7 @@ export default function AddEmail({ sharedArray, updateArray }) {
   const updateEmail = (index, newValue) => {
     setProcessedEmails((prevEmails) => {
       const updatedEmails = prevEmails.map((email, i) => (i === index ? newValue : email))
-      // Update shared array when updating an email
+      
       updateArray(updatedEmails)
       return updatedEmails
     })

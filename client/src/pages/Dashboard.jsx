@@ -14,7 +14,7 @@ export default function EmailDashboard() {
   const [allEmails, setAllEmails] = useState([]);
   const [messageCount, setMessageCount] = useState(10);
   const isAuth = useRecoilValue(authState);
-  const [status, setStatus] = useState('sent'); // Default to 'sent'
+  const [status, setStatus] = useState('sent'); 
 
   useEffect(() => {
     if (true) {
@@ -64,10 +64,10 @@ export default function EmailDashboard() {
     <main className="p-6 space-y-6 flex bg-zinc-100 justify-between items-center pt-20 gap-6 w-screen">
       {!isSelectEmail && (
         <div className="w-full">
-          {/* Email List Section */}
+      
           <div className="bg-white w-full border border-zinc-300 rounded-lg overflow-hidden shadow-md">
             <div className="p-4 border-b border-zinc-300">
-              {/* Buttons for Sent and Replied Emails */}
+            
               <div className="flex space-x-4">
                 <button
                   onClick={() => setStatus('sent')}
@@ -101,7 +101,7 @@ export default function EmailDashboard() {
               <p className="text-sm text-zinc-400">Emails that have been {status}</p>
             </div>
             <div className="p-4">
-              {/* Show loader while emails are being fetched */}
+         
               {!isLoading &&
                 <EmailList
                   emails={filterEmails(status)}
